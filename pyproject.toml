@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "packagingproject"
+version = "0.1.0"
+description = ""
+authors = ["Rotola Akinsowon <rotolaakinsowon@yahoo.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+im_stripe = {path = "im_integrations/im_stripe", optional = true}
+im_hubspot = {path = "im_integrations/im_hubspot", optional = true}
+
+[tool.poetry.dev-dependencies]
+
+[tool.extras]
+im-stripe = ["im_stripe"]
+im-hubspot = ["im_hubspot"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
