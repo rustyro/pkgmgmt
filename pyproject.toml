@@ -11,7 +11,7 @@ im_hubspot = {path = "im_integrations/im_hubspot", optional = true}
 
 [tool.poetry.dev-dependencies]
 
-[tool.extras]
+[tool.poetry.extras]
 im-stripe = ["im_stripe"]
 im-hubspot = ["im_hubspot"]
 

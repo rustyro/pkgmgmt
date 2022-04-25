@@ -3,7 +3,7 @@ name = "certifi"
 version = "2021.10.8"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
-optional = false
+optional = true
 python-versions = "*"
 
 [[package]]
@@ -11,26 +11,59 @@ name = "charset-normalizer"
 version = "2.0.12"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 category = "main"
-optional = false
+optional = true
 python-versions = ">=3.5.0"
 
 [package.extras]
 unicode_backport = ["unicodedata2"]
 
 [[package]]
+name = "hubspot-api-client"
+version = "5.0.0"
+description = "HubSpot API client"
+category = "main"
+optional = true
+python-versions = ">=3.5"
+
+[package.dependencies]
+certifi = "*"
+python-dateutil = "*"
+six = ">=1.10"
+urllib3 = ">=1.15"
+
+[package.extras]
+dev = ["pytest", "black"]
+
+[[package]]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
-optional = false
+optional = true
 python-versions = ">=3.5"
 
 [[package]]
-name = "im-stripe"
+name = "im_hubspot"
 version = "1.0.0"
 description = ""
 category = "main"
-optional = false
+optional = true
+python-versions = "*"
+develop = false
+
+[package.dependencies]
+hubspot-api-client = "*"
+
+[package.source]
+type = "directory"
+url = "im_integrations/im_hubspot"
+
+[[package]]
+name = "im_stripe"
+version = "1.0.0"
+description = ""
+category = "main"
+optional = true
 python-versions = "*"
 develop = false
 
@@ -42,11 +75,22 @@ type = "directory"
 url = "im_integrations/im_stripe"
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = true
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "requests"
 version = "2.27.1"
 description = "Python HTTP for Humans."
 category = "main"
-optional = false
+optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [package.dependencies]
@@ -60,11 +104,19 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = true
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "stripe"
 version = "2.74.0"
 description = "Python bindings for the Stripe API"
 category = "main"
-optional = false
+optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.dependencies]
@@ -75,7 +127,7 @@ name = "urllib3"
 version = "1.26.9"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
-optional = false
+optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
 [package.extras]
@@ -83,10 +135,14 @@ brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
 secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
+[extras]
+im-hubspot = ["im_hubspot"]
+im-stripe = ["im_stripe"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a5b03bdac145496c223f39d9efc17d1d880b2498a1ccdfa9262d7d4be1d3cf7e"
+content-hash = "5e1d501c36f58983032957413e34ad5bfdef34ca59bc37b27e163567472c9083"
 
 [metadata.files]
 certifi = [
@@ -97,14 +153,27 @@ charset-normalizer = [
     {file = "charset-normalizer-2.0.12.tar.gz", hash = "sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"},
     {file = "charset_normalizer-2.0.12-py3-none-any.whl", hash = "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"},
 ]
+hubspot-api-client = [
+    {file = "hubspot-api-client-5.0.0.tar.gz", hash = "sha256:04a4fc5f7a48ff17fc5308ae54f910346c2772053fb853a5fbea6c9dff54fc45"},
+    {file = "hubspot_api_client-5.0.0-py3-none-any.whl", hash = "sha256:ae1830bdeb7b69dd1380af7c23aa3093c69864a26ba2fbfd21dc0ac6d656517e"},
+]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
-im-stripe = []
+im_hubspot = []
+im_stripe = []
+python-dateutil = [
+    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
+    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
+]
 requests = [
     {file = "requests-2.27.1-py2.py3-none-any.whl", hash = "sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d"},
     {file = "requests-2.27.1.tar.gz", hash = "sha256:68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"},
+]
+six = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 stripe = [
     {file = "stripe-2.74.0-py2.py3-none-any.whl", hash = "sha256:f16e577a3f8b25ac912ba9f1c0f84490d37ff01e7749a168deafc7708ce7a866"},
